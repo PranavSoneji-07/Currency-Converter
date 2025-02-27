@@ -12,20 +12,34 @@ class Converter extends StatefulWidget{
 class _Currency extends State<Converter> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar( title: Text("Currency Converter", textAlign: TextAlign.center,),
+    return Scaffold(        appBar: AppBar(  title: Text('Currency Converter'),
+      flexibleSpace: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Color.fromRGBO(135, 206, 235, 1), Color.fromRGBO(245, 239, 224, 1)], // Gradient colors
+            begin: Alignment.topRight,
+            end: Alignment.bottomRight,
+          ),
+        ),
       ),
+    ),
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        color: Colors.pink,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Color.fromRGBO(135, 206, 235, 1), Color.fromRGBO(245, 239, 224, 1)], // Gradient colors
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+        ),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
+         // crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
               width: double.infinity,
               height: 90,
-              margin: EdgeInsets.only(left: 25, right: 25, top: 150),
+              margin: EdgeInsets.only(left: 25, right: 25, top: 200),
               color: Colors.green,
 
             )
