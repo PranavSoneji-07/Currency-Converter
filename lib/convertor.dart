@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Convertor extends StatefulWidget{
-  const Convertor({super.key}),
+  const Convertor({super.key});
 
   @override
   State<Convertor> createState(){
@@ -9,12 +9,28 @@ class Convertor extends StatefulWidget{
   }
 }
 
-class _Currency extends State<Convertor>{
+class _Currency extends State<Convertor> {
   @override
-
-  Widget build(BuildContext context){
-    return MaterialApp(
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar( title: Text("CURRENCY H", textAlign: TextAlign.center,),
+      ),
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              width: double.infinity,
+              height: 150,
+              margin: EdgeInsets.symmetric(horizontal: 20),
+            )
+          ],
+        ),
+      ),
 
     );
   }
+
 }
