@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:currency/convertor.dart';
+import 'package:currency/converter.dart';
 
 
 
@@ -8,7 +8,7 @@ class HomeUI extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(  title: Text('Currency Convertor'),
+        appBar: AppBar(  title: Text('Currency Converter'),
           flexibleSpace: Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
@@ -24,12 +24,12 @@ class HomeUI extends StatelessWidget {
           child:Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text("WELCOME TO CURRENCY CONVERTOR!", textAlign: TextAlign.center, style: TextStyle(fontSize: 50, color: Color.fromRGBO(139, 69, 19, 1), fontWeight: FontWeight.bold),),
+              Text("WELCOME TO CURRENCY CONVERTER!", textAlign: TextAlign.center, style: TextStyle(fontSize: 50, color: Color.fromRGBO(139, 69, 19, 1), fontWeight: FontWeight.bold),),
               Container(
                 padding: EdgeInsets.all(20),
                 margin: EdgeInsets.all(10),
                 child: ElevatedButton(onPressed: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=> Convertor()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=> Converter()));
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.white,
