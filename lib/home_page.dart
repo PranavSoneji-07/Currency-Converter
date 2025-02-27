@@ -1,4 +1,3 @@
-import 'package:currency/io.dart';
 import 'package:flutter/material.dart';
 import 'package:currency/convertor.dart';
 
@@ -8,12 +7,7 @@ class HomeUI extends StatelessWidget {
   const HomeUI({super.key});
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: "Hello",
-      theme: ThemeData(scaffoldBackgroundColor: const Color.fromRGBO(245, 239, 224, 1),
-      ),
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
+    return Scaffold(
         appBar: AppBar(  title: Text('Currency Convertor'),
           flexibleSpace: Container(
             decoration: BoxDecoration(
@@ -35,7 +29,7 @@ class HomeUI extends StatelessWidget {
                 padding: EdgeInsets.all(20),
                 margin: EdgeInsets.all(10),
                 child: ElevatedButton(onPressed: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=> Hello()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=> Convertor()));
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.white,
@@ -48,7 +42,6 @@ class HomeUI extends StatelessWidget {
           ),
         )
 
-      ),
-    );
+      );
   }
 }
