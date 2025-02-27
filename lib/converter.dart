@@ -18,13 +18,16 @@ class _Currency extends State<Converter> {
       body: Container(
         width: double.infinity,
         height: double.infinity,
+        color: Colors.pink,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
               width: double.infinity,
-              height: 150,
-              margin: EdgeInsets.symmetric(horizontal: 20),
+              height: 90,
+              margin: EdgeInsets.only(left: 25, right: 25, top: 150),
+              color: Colors.green,
+
             )
           ],
         ),
