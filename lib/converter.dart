@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 
-class Convertor extends StatefulWidget{
-  const Convertor({super.key});
+class Converter extends StatefulWidget{
+  const Converter({super.key});
 
   @override
-  State<Convertor> createState(){
+  State<Converter> createState(){
     return _Currency();
   }
 }
 
-class _Currency extends State<Convertor> {
+class _Currency extends State<Converter> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar( title: Text("Currency Convertor", textAlign: TextAlign.center,),
+      appBar: AppBar( title: Text("Currency Converter", textAlign: TextAlign.center,),
       ),
       body: Container(
         width: double.infinity,
