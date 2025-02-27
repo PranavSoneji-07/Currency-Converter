@@ -13,7 +13,7 @@ class _Currency extends State<Convertor> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar( title: Text("CURRENCY H", textAlign: TextAlign.center,),
+      appBar: AppBar( title: Text("Currency Convertor", textAlign: TextAlign.center,),
       ),
       body: Container(
         width: double.infinity,
