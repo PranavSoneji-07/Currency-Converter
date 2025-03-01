@@ -26,6 +26,7 @@ class _Currency extends State<Converter> {
       body: Container(
         width: double.infinity,
         height: double.infinity,
+        padding: EdgeInsets.zero,
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [Color.fromRGBO(135, 206, 235, 1), Color.fromRGBO(245, 239, 224, 1)], // Gradient colors
@@ -39,10 +40,37 @@ class _Currency extends State<Converter> {
             Container(
               width: double.infinity,
               height: 90,
-              margin: EdgeInsets.only(left: 25, right: 25, top: 200),
+              margin: EdgeInsets.only(left: 25, right: 25, top: 180),
               color: Colors.green,
+              child: Text("Input Amount", style: TextStyle(fontSize: 30), textAlign: TextAlign.center,),
+            ),
 
-            )
+            Row(
+              children: [
+                Container(
+                  width: 145,
+                  height: 130,
+                  margin: EdgeInsets.only(left: 10, top: 30),
+                  color: Colors.red,
+                  child: Text("Input Currency", style: TextStyle(fontSize: 30), textAlign: TextAlign.center,),
+                ),
+                ElevatedButton.icon(onPressed: (){}, label: Text("Exchange")),
+                Container(
+                  width: 145,
+                  height: 130,
+                  margin: EdgeInsets.only(left: 0, top: 30),
+                  color: Colors.amber,
+                  child: Text("Output Currency", style: TextStyle(fontSize: 30), textAlign: TextAlign.center,),
+                ),
+              ],
+            ),
+            Container(
+              width: double.infinity,
+              height: 90,
+              margin: EdgeInsets.only(left: 25, right: 25, top: 30),
+              color: Colors.purple,
+              child: Text("Output Amount", style: TextStyle(fontSize: 30), textAlign: TextAlign.center,),
+            ),
           ],
         ),
       ),
