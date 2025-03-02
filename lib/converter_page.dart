@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package: fetch_input_country.dart';
 
 class Converter extends StatefulWidget{
   const Converter({super.key});
@@ -53,6 +54,12 @@ class _Currency extends State<Converter> {
                   height: 130,
                   margin: EdgeInsets.only(left: 10, top: 30),
                   child: DropdownMenu(
+                    textStyle: TextStyle(fontSize: 30,),
+                    onSelected: (value) {
+                      setState(() {
+                        selectedValue = value.toString();
+                      });
+                    },
                     initialSelection: selectedValue,
                     dropdownMenuEntries: [
                       DropdownMenuEntry(value: "INR", label: "Indian ruppee"),
