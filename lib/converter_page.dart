@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:currency/functionality.dart';
+import 'functionality.dart';
+import 'package:flutter/services.dart';
 
 
 class Converter extends StatefulWidget{
@@ -13,6 +14,11 @@ class Converter extends StatefulWidget{
 
 class _Currency extends State<Converter> {
   String selectedValue = "INR";
+  String selectedValue1 = "INR";
+  var fetch = Fetch();
+  double textval =0,Ouput = 0;
+  final controller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(        appBar: AppBar(  title: Text('Currency Converter'),
@@ -44,8 +50,15 @@ class _Currency extends State<Converter> {
               width: double.infinity,
               height: 90,
               margin: EdgeInsets.only(left: 25, right: 25, top: 180),
-              color: Colors.green,
-              child: Text("Input Amount", style: TextStyle(fontSize: 30), textAlign: TextAlign.center,),
+              child: TextField(
+                controller: controller,
+                keyboardType: TextInputType.number,
+                inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  hintText: "Enter amount",
+                ),
+              ),
             ),
 
             Row(
@@ -55,10 +68,13 @@ class _Currency extends State<Converter> {
                   height: 130,
                   margin: EdgeInsets.only(left: 10, top: 30),
                   child: DropdownMenu(
-                    textStyle: TextStyle(fontSize: 30,),
+                    textStyle: TextStyle(fontSize: 20,),
                     onSelected: (value) {
                       selectedValue = value.toString();
-                      Fetch.fetchData(selectedValue);
+                      fetch.fetchData(selectedValue);
+                      setState(() {
+                        Ouput = fetch.out(textval);
+                      });
                     },
                     initialSelection: selectedValue,
                     dropdownMenuEntries: [
@@ -74,14 +90,18 @@ class _Currency extends State<Converter> {
                     width: 145,
                   ),
                 ),
-                ElevatedButton.icon(onPressed: (){}, label: Text("Exchange")),
-                Container(                  child: DropdownMenu(
-                  textStyle: TextStyle(fontSize: 30,),
+                Container(
+                  margin: EdgeInsets.only(left: 80, bottom: 38),
+                  child: DropdownMenu(
+                  textStyle: TextStyle(fontSize: 20,),
                   onSelected: (value) {
-                    selectedValue = value.toString();
-                    Fetch.fetchData(selectedValue);
+                    selectedValue1 = value.toString();
+                    fetch.fetchOut(selectedValue1);
+                    setState(() {
+                      Ouput = fetch.out(textval);
+                    });
                   },
-                  initialSelection: selectedValue,
+                  initialSelection: selectedValue1,
                   dropdownMenuEntries: [
                     DropdownMenuEntry(value: "INR", label: "Indian ruppee"),
                     DropdownMenuEntry(value: "USD", label: "US Dollar"),
@@ -102,7 +122,7 @@ class _Currency extends State<Converter> {
               height: 90,
               margin: EdgeInsets.only(left: 25, right: 25, top: 30),
               color: Colors.purple,
-              child: Text("Output Amount", style: TextStyle(fontSize: 30), textAlign: TextAlign.center,),
+              child: Text(Ouput.toString(), style: TextStyle(fontSize: 30), textAlign: TextAlign.center,),
             ),
           ],
         ),
