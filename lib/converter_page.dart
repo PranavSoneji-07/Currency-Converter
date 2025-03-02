@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package: fetch_input_country.dart';
+import 'package:currency/fetch_input_country.dart';
 
 class Converter extends StatefulWidget{
   const Converter({super.key});
