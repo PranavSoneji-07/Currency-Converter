@@ -10,6 +10,7 @@ class Converter extends StatefulWidget{
 }
 
 class _Currency extends State<Converter> {
+  String selectedValue = "INR";
   @override
   Widget build(BuildContext context) {
     return Scaffold(        appBar: AppBar(  title: Text('Currency Converter'),
@@ -51,8 +52,20 @@ class _Currency extends State<Converter> {
                   width: 145,
                   height: 130,
                   margin: EdgeInsets.only(left: 10, top: 30),
-                  color: Colors.red,
-                  child: Text("Input Currency", style: TextStyle(fontSize: 30), textAlign: TextAlign.center,),
+                  child: DropdownMenu(
+                    initialSelection: selectedValue,
+                    dropdownMenuEntries: [
+                      DropdownMenuEntry(value: "INR", label: "Indian ruppee"),
+                      DropdownMenuEntry(value: "USD", label: "US Dollar"),
+                      DropdownMenuEntry(value: "JYP", label: "Japanese Yen"),
+                      DropdownMenuEntry(value: "AED", label: "UAE Dirham"),
+                      DropdownMenuEntry(value: "GBP", label: "Pound Sterling"),
+                      DropdownMenuEntry(value: "KRW", label: "South Korean Won"),
+                      DropdownMenuEntry(value: "CNY", label: "Chinese Renminbi"),
+                      DropdownMenuEntry(value: "CAD", label: "Canadian Dollar"),
+                    ],
+                    width: 145,
+                  ),
                 ),
                 ElevatedButton.icon(onPressed: (){}, label: Text("Exchange")),
                 Container(
