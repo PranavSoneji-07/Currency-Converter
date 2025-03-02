@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:currency/fetch_input_country.dart';
-
+import 'package:currency/functionality.dart';
 
 
 class Converter extends StatefulWidget{
@@ -58,9 +57,8 @@ class _Currency extends State<Converter> {
                   child: DropdownMenu(
                     textStyle: TextStyle(fontSize: 30,),
                     onSelected: (value) {
-                      setState(() {
-                        selectedValue = value.toString();
-                      });
+                      selectedValue = value.toString();
+                      Fetch.fetchData(selectedValue);
                     },
                     initialSelection: selectedValue,
                     dropdownMenuEntries: [
@@ -77,12 +75,25 @@ class _Currency extends State<Converter> {
                   ),
                 ),
                 ElevatedButton.icon(onPressed: (){}, label: Text("Exchange")),
-                Container(
+                Container(                  child: DropdownMenu(
+                  textStyle: TextStyle(fontSize: 30,),
+                  onSelected: (value) {
+                    selectedValue = value.toString();
+                    Fetch.fetchData(selectedValue);
+                  },
+                  initialSelection: selectedValue,
+                  dropdownMenuEntries: [
+                    DropdownMenuEntry(value: "INR", label: "Indian ruppee"),
+                    DropdownMenuEntry(value: "USD", label: "US Dollar"),
+                    DropdownMenuEntry(value: "JYP", label: "Japanese Yen"),
+                    DropdownMenuEntry(value: "AED", label: "UAE Dirham"),
+                    DropdownMenuEntry(value: "GBP", label: "Pound Sterling"),
+                    DropdownMenuEntry(value: "KRW", label: "South Korean Won"),
+                    DropdownMenuEntry(value: "CNY", label: "Chinese Renminbi"),
+                    DropdownMenuEntry(value: "CAD", label: "Canadian Dollar"),
+                  ],
                   width: 145,
-                  height: 130,
-                  margin: EdgeInsets.only(left: 0, top: 30),
-                  color: Colors.amber,
-                  child: Text("Output Currency", style: TextStyle(fontSize: 30), textAlign: TextAlign.center,),
+                ),
                 ),
               ],
             ),

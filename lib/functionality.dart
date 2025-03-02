@@ -1,22 +1,16 @@
-import 'package:flutter/material.dart';
-import 'package:currency/fetch_input_country.dart';
+import 'dart:convert';
+import 'package:http/http.dart';
 
-
-class ExchangeRate extends StatefulWidget {
-  const ExchangeRate({super.key});
-
-  @override
-  State<ExchangeRate> createState() => _ExchangeRateState();
-}
-
-class _ExchangeRateState extends State<ExchangeRate> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold();
+class Fetch {
+  static Future<void> fetchData(String currencyCode) async {
+    final url = Uri.https(
+        'v6.exchangerate-api.com',
+        'v6/36540c75dc2dbfd0599b22a0/latest/$currencyCode');
+    var response = await get(url);
+    final data = jsonDecode(response.body);
   }
 
 }
-
 
 
 
