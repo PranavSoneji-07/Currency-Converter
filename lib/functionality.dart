@@ -1,26 +1,43 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart';
 
 class Fetch {
-  var data,inti,result;
+  dynamic data;
   Future<void> fetchData(String currencyCode) async {
-    inti = currencyCode;
     final url = Uri.https(
         'v6.exchangerate-api.com',
         'v6/36540c75dc2dbfd0599b22a0/latest/$currencyCode');
     var response = await get(url);
     data = jsonDecode(response.body);
-    debugPrint("Data Fetched");
+    debugPrint("Data fetched");
   }
-  void fetchOut(String code){
-    var result = data["$code"];
-    print(result);
+  double fetchOut(String code) {
+    if (data == null) {
+      debugPrint("Data is null. Ensure fetchData() is called and awaited.");
+      fetchData("IND");
+    }
+
+    var result = data["conversion_rates"]?[code];
+
+    if (result == null) {
+      debugPrint("Invalid currency code: $code");
+      return 0.0; // Handle invalid currency codes
+    }
+
+    debugPrint('$result');
+    return double.tryParse(result.toString()) ?? 0.0; // Ensure conversion to double
   }
 
-  double out(double intput){
-    return intput*result;
+
+
+  double out(double input, String Code){
+    double result = fetchOut(Code);
+
+    return input*result;
   }
 
 
