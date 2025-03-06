@@ -25,26 +25,27 @@ class _Currency extends State<Converter> {
   Widget build(BuildContext context) {
     return Scaffold(
     extendBodyBehindAppBar: true,
-      appBar: AppBar(  title: Text('Currency Converter', style: TextStyle(color: Colors.black),),
+      appBar: AppBar(  title: Text('Currency Converter', style: TextStyle(color: Colors.black), textAlign: TextAlign.center,),
     ),
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        padding: EdgeInsets.only(top: 30),
-        margin: EdgeInsets.only(top: 30),
+        margin: EdgeInsets.only(top: 112),
 
         decoration: BoxDecoration(
-          color: Color.fromRGBO(177, 183, 224, 0.8),
-          borderRadius: BorderRadius.circular(10),
+          color: Color.fromRGBO(156, 161, 209, 0.5),
+          borderRadius: BorderRadius.circular(30),
         ),
         child: Column(
-         // crossAxisAlignment: CrossAxisAlignment.center,
+         crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
+              height: 80,
+              padding: EdgeInsets.all(20),
               decoration: BoxDecoration(
-                color: Color.fromRGBO(0, 0, 0, 0.55)
+                color: Color.fromRGBO(250, 250, 250, 1),
+                borderRadius: BorderRadius.circular(20)
               ),
-              width: double.infinity,
               margin: EdgeInsets.only(left: 25, right: 25, top: 180),
               child:
 
@@ -54,7 +55,7 @@ class _Currency extends State<Converter> {
                 keyboardType: TextInputType.number,
                 inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                 decoration: InputDecoration(
-                  border: OutlineInputBorder(),
+                  border: InputBorder.none,
                   hintText: "Enter amount",
                 ),
                 onChanged: (value) async {
@@ -106,6 +107,7 @@ class _Currency extends State<Converter> {
                   ),
                 ),
                 Container(
+                  height: 54,
                   margin: EdgeInsets.only(left: 80, bottom: 38),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
@@ -137,6 +139,9 @@ class _Currency extends State<Converter> {
                     DropdownMenuEntry(value: "CAD", label: "Canadian Dollar"),
                   ],
                   width: 145,
+                    inputDecorationTheme: InputDecorationTheme(
+                      outlineBorder: BorderSide.none,
+                    ),
                 ),
                 ),
               ],
