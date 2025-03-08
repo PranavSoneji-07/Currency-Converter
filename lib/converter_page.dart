@@ -69,11 +69,11 @@ class _Currency extends State<Converter> {
                   onChanged: (value) async {
                     setState(() {
                       if(value=="" || value == " "){
-                        textval = 0;
+                        textval = 0.0;
                       }
                       else
                       {textval = double.parse(value);}
-                      Output = fetch.out(textval, selectedValue1);
+                      Output = fetch.Complete(textval, selectedValue1, selectedValue);
                     });
                   },
                 ),
@@ -105,7 +105,7 @@ class _Currency extends State<Converter> {
                     textStyle: TextStyle(fontSize: 20, color: Colors.black),
                     onSelected: (value) {
                       selectedValue = value.toString();
-                      fetch.fetchOut(selectedValue);
+                      fetch.dataMatch(selectedValue);
                       setState(() {
                         Output = fetch.out(textval, selectedValue);
                       });
@@ -154,7 +154,7 @@ class _Currency extends State<Converter> {
                     textStyle: TextStyle(fontSize: 20, color: Colors.black),
                     onSelected: (value) {
                       selectedValue1 = value.toString();
-                      fetch.fetchOut(selectedValue1);
+                      fetch.dataMatch(selectedValue1);
                       setState(() {
                         Output = fetch.out(textval, selectedValue1);
                       });

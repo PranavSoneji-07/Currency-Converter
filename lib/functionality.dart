@@ -13,22 +13,23 @@ class Fetch {
         'v6/36540c75dc2dbfd0599b22a0/latest/$currencyCode');
     var response = await get(url);
     data = jsonDecode(response.body);
-    debugPrint("Data fetched");
+    debugPrint("Data fetched of $currencyCode");
   }
   double dataMatch(String code) {
     if (data == null) {
       debugPrint("Data is null. Ensure fetchData() is called and awaited.");
-      fetchData("IND");
+      fetchData("INR");
+      debugPrint("DataMatch");
     }
 
-    var result = data["conversion_rates"]?[code];
+    var result = data["conversion_rates"][code];
 
     if (result == null) {
       debugPrint("Invalid currency code: $code");
       return 0.0; // Handle invalid currency codes
     }
 
-    debugPrint('$result');
+    debugPrint("Result = $result To Currency - $code");
     return double.tryParse(result.toString()) ?? 0.0; // Ensure conversion to double
   }
 
@@ -36,13 +37,19 @@ class Fetch {
 
   double out(double input, String Code){
     double result = dataMatch(Code);
+    debugPrint("Result  = $result & Input = $input To Currency = $Code");
     return input*result;
   }
 
-  void Complete(String currencyCode){
-    fetchData(currencyCode);
+  double Complete(double input, String currencyCode, String Code){
+    if (data == "NULL")
+      {fetchData(currencyCode);
+        dataMatch("INR");
+      }
 
-  }
+    return out(input, Code);
+    }
+
 
 
 
