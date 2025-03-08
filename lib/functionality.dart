@@ -15,7 +15,7 @@ class Fetch {
     data = jsonDecode(response.body);
     debugPrint("Data fetched");
   }
-  double fetchOut(String code) {
+  double dataMatch(String code) {
     if (data == null) {
       debugPrint("Data is null. Ensure fetchData() is called and awaited.");
       fetchData("IND");
@@ -35,9 +35,13 @@ class Fetch {
 
 
   double out(double input, String Code){
-    double result = fetchOut(Code);
-
+    double result = dataMatch(Code);
     return input*result;
+  }
+
+  void Complete(String currencyCode){
+    fetchData(currencyCode);
+
   }
 
 

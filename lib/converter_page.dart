@@ -24,141 +24,176 @@ class _Currency extends State<Converter> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(  title: Text('Converter', style: TextStyle(color: Colors.black), textAlign: TextAlign.center),
+      appBar: AppBar(  title: Text('Converter', style: TextStyle(color: Colors.black, fontSize: 25), textAlign: TextAlign.center),
+        flexibleSpace: Container(
+          color: Colors.white,
+        ),
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Text("Amount", style: TextStyle(color: Colors.red),),
-          Container(
-            height: 80,
-            padding: EdgeInsets.all(20),
-            decoration: BoxDecoration(
-              color: Color.fromRGBO(250, 250, 250, 1),
-              borderRadius: BorderRadius.circular(20)
-            ),
-            margin: EdgeInsets.only(left: 25, right: 25, top: 150),
-            child:
-
-            //Input
-            TextField(
-              controller: controller,
-              keyboardType: TextInputType.number,
-              inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-              decoration: InputDecoration(
-                border: InputBorder.none,
-                hintText: "Enter amount",
+      body: Container(
+        padding: EdgeInsets.all(0),
+        color: Colors.white,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Container(
+              margin: EdgeInsets.only(left: 5, top: 25),
+              child: Row(
+                children: [
+                  Padding(padding: EdgeInsets.all(10)),
+                  Text("Amount", style: TextStyle(color: Colors.black, fontSize: 20), textAlign: TextAlign.left),
+                ],
               ),
-              onChanged: (value) async {
-                setState(() {
-                  if(value=="" || value == " "){
-                    textval = 0;
-                  }
-                  else
-                  {textval = double.parse(value);}
-                  Output = fetch.out(textval, selectedValue1);
-                });
-              },
             ),
-          ),
-
-
-
-          // Dropdown Menus
-          Row(
-            children: [
+             //Input
               Container(
-                padding: EdgeInsets.only(left: 10, top: 5, right: 5, bottom: 5),
-                margin: EdgeInsets.only(left: 10, bottom: 38, top: 90),
+                height: 56,
+                width: 361,
+                margin: EdgeInsets.all(20),
+                padding: EdgeInsets.only(left: 10),
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: Color.fromRGBO(89, 100, 236, 1),
+                  border: Border.all(color: Color.fromRGBO(0, 0, 0, 0.5)),
+                  borderRadius: BorderRadius.circular(20)
                 ),
-                child:
-
-
-                //Input Currency
-
-                DropdownMenu(
-                  textStyle: TextStyle(fontSize: 30, color: Colors.white),
-                  onSelected: (value) {
-                    selectedValue1 = value.toString();
-                    fetch.fetchOut(selectedValue1);
+                child: TextField(
+                  controller: controller,
+                  keyboardType: TextInputType.number,
+                  inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    hintText: "Enter amount",
+                  ),
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.black
+                  ),
+                  onChanged: (value) async {
                     setState(() {
+                      if(value=="" || value == " "){
+                        textval = 0;
+                      }
+                      else
+                      {textval = double.parse(value);}
                       Output = fetch.out(textval, selectedValue1);
                     });
                   },
-                  initialSelection: selectedValue1,
-                  dropdownMenuEntries: [
-                    DropdownMenuEntry(value: "INR", label: "Indian ruppee"),
-                    DropdownMenuEntry(value: "USD", label: "US Dollar"),
-                    DropdownMenuEntry(value: "JPY", label: "Japanese Yen"),
-                    DropdownMenuEntry(value: "AED", label: "UAE Dirham"),
-                    DropdownMenuEntry(value: "GBP", label: "Pound Sterling"),
-                    DropdownMenuEntry(value: "KRW", label: "South Korean Won"),
-                    DropdownMenuEntry(value: "CNY", label: "Chinese Renminbi"),
-                    DropdownMenuEntry(value: "CAD", label: "Canadian Dollar"),
-                  ],
-                  width: 150,
-                  inputDecorationTheme: InputDecorationTheme(
-                    outlineBorder: BorderSide.none,
-                  ),
                 ),
               ),
-              Container(
-                padding: EdgeInsets.only(left: 10, top: 5, right: 5, bottom: 5),
-                margin: EdgeInsets.only(left: 55, bottom: 38, top: 90),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: Color.fromRGBO(89, 100, 236, 1),
-                ),
-                child:
 
-
-                //Output Currency
-
-
-
-
-                DropdownMenu(
-                textStyle: TextStyle(fontSize: 30, color: Colors.white,),
-                onSelected: (value) {
-                  selectedValue1 = value.toString();
-                  fetch.fetchOut(selectedValue1);
-                  setState(() {
-                    Output = fetch.out(textval, selectedValue1);
-                  });
-                },
-                initialSelection: selectedValue1,
-                dropdownMenuEntries: [
-                  DropdownMenuEntry(value: "INR", label: "Indian ruppee"),
-                  DropdownMenuEntry(value: "USD", label: "US Dollar"),
-                  DropdownMenuEntry(value: "JPY", label: "Japanese Yen"),
-                  DropdownMenuEntry(value: "AED", label: "UAE Dirham"),
-                  DropdownMenuEntry(value: "GBP", label: "Pound Sterling"),
-                  DropdownMenuEntry(value: "KRW", label: "South Korean Won"),
-                  DropdownMenuEntry(value: "CNY", label: "Chinese Renminbi"),
-                  DropdownMenuEntry(value: "CAD", label: "Canadian Dollar"),
+            Container(
+              margin: EdgeInsets.only(left: 5, top: 5),
+              child: Row(
+                children: [
+                  Padding(padding: EdgeInsets.all(10)),
+                  Text("From Currency:", style: TextStyle(color: Colors.black, fontSize: 20), textAlign: TextAlign.left),
                 ],
-                width: 150,
-                  inputDecorationTheme: InputDecorationTheme(
-                    outlineBorder: BorderSide.none,
-                  ),
               ),
-              ),
-            ],
-          ),
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(100),
-              color: Color.fromRGBO(250, 250, 250, 1),
             ),
-            width: double.infinity,
-            height: 90,
-            margin: EdgeInsets.only(left: 70, right: 70, top: 69),
-            child: Center(child: Text(Output.toString(), style: TextStyle(fontSize: 40, color: Colors.black), textAlign: TextAlign.center,)),
-          ),
-        ],
+            // Dropdown Menus
+            Row(
+              children: [
+                Container(
+                  width: 368,
+                  padding: EdgeInsets.only(left: 5),
+                  margin: EdgeInsets.only(left: 20,top: 10),
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Color.fromRGBO(0, 0, 0, 0.3)),
+                      borderRadius: BorderRadius.circular(20)                  ),
+                  child:
+                  //Input Currency
+
+                  DropdownMenu(
+                    textStyle: TextStyle(fontSize: 20, color: Colors.black),
+                    onSelected: (value) {
+                      selectedValue = value.toString();
+                      fetch.fetchOut(selectedValue);
+                      setState(() {
+                        Output = fetch.out(textval, selectedValue);
+                      });
+                    },
+                    initialSelection: selectedValue,
+                    dropdownMenuEntries: [
+                      DropdownMenuEntry(value: "INR", label: " INR - Indian ruppee"),
+                      DropdownMenuEntry(value: "USD", label: "USD - US Dollar"),
+                      DropdownMenuEntry(value: "JPY", label: "JPY - Japanese Yen"),
+                      DropdownMenuEntry(value: "AED", label: "AED - UAE Dirham"),
+                      DropdownMenuEntry(value: "GBP", label: "GBP - Pound Sterling"),
+                      DropdownMenuEntry(value: "KRW", label: "KRW - South Korean Won"),
+                      DropdownMenuEntry(value: "CNY", label: "CNY - Chinese Renminbi"),
+                      DropdownMenuEntry(value: "CAD", label: "CAD - Canadian Dollar"),
+                    ],
+                    width: 368,
+                    inputDecorationTheme: InputDecorationTheme(
+                      border: InputBorder.none,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Container(
+              margin: EdgeInsets.only(left: 5, top: 10),
+              child: Row(
+                children: [
+                  Padding(padding: EdgeInsets.all(10)),
+                  Text("To Currency:", style: TextStyle(color: Colors.black, fontSize: 20), textAlign: TextAlign.left),
+                ],
+              ),
+            ),
+            Row(
+              children: [
+                Container(
+                  width: 368,
+                  padding: EdgeInsets.only(left: 5),
+                  margin: EdgeInsets.only(left: 20,top: 10),
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Color.fromRGBO(0, 0, 0, 0.3)),
+                      borderRadius: BorderRadius.circular(20)                  ),
+                  child:
+                  //Output Currency
+
+                  DropdownMenu(
+                    textStyle: TextStyle(fontSize: 20, color: Colors.black),
+                    onSelected: (value) {
+                      selectedValue1 = value.toString();
+                      fetch.fetchOut(selectedValue1);
+                      setState(() {
+                        Output = fetch.out(textval, selectedValue1);
+                      });
+                    },
+                    initialSelection: selectedValue1,
+                    dropdownMenuEntries: [
+                      DropdownMenuEntry(value: "INR", label: " INR - Indian ruppee"),
+                      DropdownMenuEntry(value: "USD", label: "USD - US Dollar"),
+                      DropdownMenuEntry(value: "JPY", label: "JPY - Japanese Yen"),
+                      DropdownMenuEntry(value: "AED", label: "AED - UAE Dirham"),
+                      DropdownMenuEntry(value: "GBP", label: "GBP - Pound Sterling"),
+                      DropdownMenuEntry(value: "KRW", label: "KRW - South Korean Won"),
+                      DropdownMenuEntry(value: "CNY", label: "CNY - Chinese Renminbi"),
+                      DropdownMenuEntry(value: "CAD", label: "CAD - Canadian Dollar"),
+                    ],
+                    width: 368,
+                    inputDecorationTheme: InputDecorationTheme(
+                      border: InputBorder.none,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+
+
+
+
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(100),
+                color: Color.fromRGBO(0, 0, 0, 1),
+              ),
+              width: double.infinity,
+              height: 90,
+              margin: EdgeInsets.only(left: 20, right: 20, top: 69),
+              child: Center(child: Text("Converted Amount: $Output", style: TextStyle(fontSize: 28, color: Colors.white, fontWeight: FontWeight.bold), textAlign: TextAlign.center,)),
+            ),
+          ],
+        ),
       ),
 
     );
