@@ -24,15 +24,12 @@ class _Currency extends State<Converter> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-    extendBodyBehindAppBar: true,
       appBar: AppBar(  title: Text('Converter', style: TextStyle(color: Colors.black), textAlign: TextAlign.center),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Container(
-              margin: EdgeInsets.all(5),
-              child: Text("Amount", style: TextStyle(color: Colors.black),)),
+          Text("Amount", style: TextStyle(color: Colors.red),),
           Container(
             height: 80,
             padding: EdgeInsets.all(20),
@@ -119,6 +116,9 @@ class _Currency extends State<Converter> {
 
 
                 //Output Currency
+
+
+
 
                 DropdownMenu(
                 textStyle: TextStyle(fontSize: 30, color: Colors.white,),

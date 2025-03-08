@@ -57,10 +57,10 @@ class HomeUI extends StatelessWidget {
                       Navigator.push(context, MaterialPageRoute(builder: (context)=> Converter()));
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.white,
+                        backgroundColor: Colors.black,
                         padding: EdgeInsets.only(left:80, right: 80, top: 10, bottom: 10),
                       ),
-                      child: Text("Get Started", style: TextStyle(color: Colors.black, fontSize: 32)),
+                      child: Text("Get Started", style: TextStyle(color: Colors.white, fontSize: 32)),
                     ),
                   ),
                 ),
