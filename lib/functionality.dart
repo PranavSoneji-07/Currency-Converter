@@ -30,7 +30,7 @@ class Fetch {
     }
 
     debugPrint("Result = $result To Currency - $code");
-    return double.tryParse(result.toString()) ?? 0.0; // Ensure conversion to double
+    return double.tryParse(result.toStringAsFixed(4)) ?? 0.0; // Ensure conversion to double
   }
 
 
@@ -46,7 +46,6 @@ class Fetch {
       {fetchData(currencyCode);
         dataMatch("INR");
       }
-
     return out(input, Code);
     }
 
