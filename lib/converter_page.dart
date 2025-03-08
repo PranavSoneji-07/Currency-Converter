@@ -73,7 +73,7 @@ class _Currency extends State<Converter> {
                       }
                       else
                       {textval = double.parse(value);}
-                      Output = fetch.Complete(textval, selectedValue1, selectedValue);
+                      Output = fetch.Complete(textval, selectedValue, selectedValue1);
                     });
                   },
                 ),
@@ -105,14 +105,15 @@ class _Currency extends State<Converter> {
                     textStyle: TextStyle(fontSize: 20, color: Colors.black),
                     onSelected: (value) {
                       selectedValue = value.toString();
-                      fetch.dataMatch(selectedValue);
-                      setState(() {
-                        Output = fetch.out(textval, selectedValue);
+                      setState(() async {
+                        Output = await fetch.InputChange(textval, selectedValue, selectedValue1);
+                        debugPrint("Output $Output");
+
                       });
                     },
                     initialSelection: selectedValue,
                     dropdownMenuEntries: [
-                      DropdownMenuEntry(value: "INR", label: " INR - Indian ruppee"),
+                      DropdownMenuEntry(value: "INR", label: "INR - Indian rupee"),
                       DropdownMenuEntry(value: "USD", label: "USD - US Dollar"),
                       DropdownMenuEntry(value: "JPY", label: "JPY - Japanese Yen"),
                       DropdownMenuEntry(value: "AED", label: "AED - UAE Dirham"),
@@ -161,7 +162,7 @@ class _Currency extends State<Converter> {
                     },
                     initialSelection: selectedValue1,
                     dropdownMenuEntries: [
-                      DropdownMenuEntry(value: "INR", label: " INR - Indian ruppee"),
+                      DropdownMenuEntry(value: "INR", label: "INR - Indian rupee"),
                       DropdownMenuEntry(value: "USD", label: "USD - US Dollar"),
                       DropdownMenuEntry(value: "JPY", label: "JPY - Japanese Yen"),
                       DropdownMenuEntry(value: "AED", label: "AED - UAE Dirham"),
