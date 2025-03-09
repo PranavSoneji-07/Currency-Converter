@@ -66,15 +66,17 @@ class _Currency extends State<Converter> {
                     fontSize: 20,
                     color: Colors.black
                   ),
-                  onChanged: (value) async {
-                    setState(() {
+                  onChanged: (value)  async {
                       if(value=="" || value == " "){
                         textval = 0.0;
                       }
                       else
                       {textval = double.parse(value);}
-                      Output = fetch.Complete(textval, selectedValue, selectedValue1);
-                    });
+                      var wait = fetch.Complete(textval, selectedValue, selectedValue1);
+                      Output = await wait;
+                      debugPrint("TextVal = $textval & Output = $Output");
+                      setState(() {
+                      });
                   },
                 ),
               ),
@@ -103,13 +105,16 @@ class _Currency extends State<Converter> {
 
                   DropdownMenu(
                     textStyle: TextStyle(fontSize: 20, color: Colors.black),
-                    onSelected: (value) {
+                    onSelected: (value) async {
                       selectedValue = value.toString();
-                      setState(() async {
+
                         Output = await fetch.InputChange(textval, selectedValue, selectedValue1);
                         debugPrint("Output $Output");
 
-                      });
+                        setState(() {
+
+                        });
+
                     },
                     initialSelection: selectedValue,
                     dropdownMenuEntries: [
@@ -153,12 +158,14 @@ class _Currency extends State<Converter> {
 
                   DropdownMenu(
                     textStyle: TextStyle(fontSize: 20, color: Colors.black),
-                    onSelected: (value) {
+                    onSelected: (value) async {
                       selectedValue1 = value.toString();
                       fetch.dataMatch(selectedValue1);
-                      setState(() {
-                        Output = fetch.out(textval, selectedValue1);
-                      });
+                        Output = await fetch.out(textval, selectedValue1);
+
+                        setState(() {
+
+                        });
                     },
                     initialSelection: selectedValue1,
                     dropdownMenuEntries: [

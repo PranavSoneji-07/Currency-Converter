@@ -58,9 +58,9 @@ class HomeUI extends StatelessWidget {
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.black,
-                        padding: EdgeInsets.only(left:80, right: 80, top: 10, bottom: 10),
+                        padding: EdgeInsets.only(left:80, right: 80, top: 17, bottom: 17),
                       ),
-                      child: Text("Get Started", style: TextStyle(color: Colors.white, fontSize: 32)),
+                      child: Text("Get Started", style: TextStyle(color: Colors.white, fontSize: 28)),
                     ),
                   ),
                 ),
